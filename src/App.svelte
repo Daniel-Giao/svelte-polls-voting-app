@@ -20,8 +20,8 @@
       question: "Python or JavaScript?",
       answerA: "Python",
       answerB: "JavaScript",
-      VotesA: 9,
-      VotesB: 15,
+      votesA: 9,
+      votesB: 15,
     },
   ];
 
