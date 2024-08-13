@@ -6,14 +6,11 @@
   import PollDetails from "./PollDetails.svelte";
 
   export let polls = [];
-
-  PollStore.subscribe((data) => {
-    polls = data;
-  });
 </script>
 
 <div class="poll-list">
-  {#each polls as poll (poll.id)}
+  <!-- Automatic unsub -->
+  {#each $PollStore as poll (poll.id)}
     <div>
       <PollDetails {poll} on:vote />
     </div>
