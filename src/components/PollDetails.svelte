@@ -4,6 +4,7 @@
 
   // shared imports
   import Card from "../shared/Card.svelte";
+  import Button from "../shared/Button.svelte";
 
   export let poll;
   $: totalVotes = poll.votesA + poll.votesB;
@@ -24,6 +25,12 @@
       return copiedPolls;
     });
   };
+
+  const handleDelete = (id) => {
+    PollStore.update((currentPolls) => {
+      return currentPolls.filter((poll) => poll.id !== id);
+    });
+  };
 </script>
 
 <Card>
@@ -37,6 +44,9 @@
     <div class="answer" on:click={() => handleVote("b", poll.id)}>
       <div class="percent percent-b" style="width: {percentB}%;"></div>
       <span>{poll.answerB} ({poll.votesB})</span>
+    </div>
+    <div class="delete">
+      <Button flat={true} on:click={() => handleDelete(poll.id)}>Delete</Button>
     </div>
   </div>
 </Card>
@@ -77,5 +87,9 @@
   .percent-b {
     border-left: 4px solid #1b2bd9;
     background: rgba(73, 156, 251, 0.2);
+  }
+  .delete {
+    margin-top: 30px;
+    text-align: center;
   }
 </style>
