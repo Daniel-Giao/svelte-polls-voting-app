@@ -21,8 +21,6 @@
   const tweenedB = tweened(0);
   $: tweenedA.set(percentA);
   $: tweenedB.set(percentB);
-  $: console.log($tweenedA, $tweenedB);
-  
 
   // handling votes
   const handleVote = (option, id) => {

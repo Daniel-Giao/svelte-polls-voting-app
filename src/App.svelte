@@ -1,4 +1,7 @@
 <script>
+  // stores import
+  import PollStore from "./stores/PollStore";
+
   // components import
   import Header from "./components/Header.svelte";
   import Footer from "./components/Footer.svelte";
@@ -22,7 +25,11 @@
 <main>
   <Tabs {activeItem} {items} on:tabChange={tabChange} />
   {#if activeItem === "Current Polls"}
-    <p class="instruction">Click on poll's bar to vote</p>
+    {#if $PollStore.length > 0}
+      <p class="instruction">Click on poll's bar to vote</p>
+    {:else}
+      <p class="instruction">There are no polls at the moment. Try adding a new one :)</p>
+    {/if}
     <PollList />
   {:else if activeItem === "Add New Poll"}
     <CreatePollForm on:addNewPoll={handleAddNewPoll} />
