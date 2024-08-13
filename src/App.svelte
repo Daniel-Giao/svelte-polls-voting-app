@@ -22,7 +22,7 @@
 <main>
   <Tabs {activeItem} {items} on:tabChange={tabChange} />
   {#if activeItem === "Current Polls"}
-    <p class="instruction">Click on poll's item to vote</p>
+    <p class="instruction">Click on poll's bar to vote</p>
     <PollList />
   {:else if activeItem === "Add New Poll"}
     <CreatePollForm on:addNewPoll={handleAddNewPoll} />
