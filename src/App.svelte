@@ -13,18 +13,6 @@
     activeItem = e.detail;
   };
 
-  // polls
-  let polls = [
-    {
-      id: 1,
-      question: "Python or JavaScript?",
-      answerA: "Python",
-      answerB: "JavaScript",
-      votesA: 9,
-      votesB: 15,
-    },
-  ];
-
   const handleAddNewPoll = (e) => {
     const poll = e.detail;
     polls = [poll, ...polls];
@@ -52,7 +40,7 @@
   <Tabs {activeItem} {items} on:tabChange={tabChange} />
   {#if activeItem === "Current Polls"}
   <p class="instruction">Click on poll's item to vote</p>
-    <PollList {polls} on:vote={handleVote} />
+    <PollList on:vote={handleVote} />
   {:else if activeItem === "Add New Poll"}
     <CreatePollForm on:addNewPoll={handleAddNewPoll} />
   {/if}
