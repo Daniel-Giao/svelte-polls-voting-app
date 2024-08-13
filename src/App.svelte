@@ -51,6 +51,7 @@
 <main>
   <Tabs {activeItem} {items} on:tabChange={tabChange} />
   {#if activeItem === "Current Polls"}
+  <p class="instruction">Click on poll's item to vote</p>
     <PollList {polls} on:vote={handleVote} />
   {:else if activeItem === "Add New Poll"}
     <CreatePollForm on:addNewPoll={handleAddNewPoll} />
@@ -59,6 +60,11 @@
 <Footer />
 
 <style>
+  .instruction {
+    color: #707070;
+    margin: 40px auto;
+    text-align: center;
+  }
   main {
     max-width: 960px;
     margin: 40px auto;
